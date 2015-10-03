@@ -28,6 +28,10 @@ public class DatabaseHelper extends SQLiteOpenHelper
     private static String DB_NAME = "dcDB.db";
     private SQLiteDatabase mDataBase;
     private final Context mContext;
+    private String DB_Query;
+    List<String> list;
+    SQLiteDatabase db;
+    Cursor c;
 
     public DatabaseHelper(Context context)
     {
@@ -99,11 +103,11 @@ public class DatabaseHelper extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {   }
-    public List<String> getAllUsers()
+    public List<String> getAllHero()
     {
-        List<String> listUsers = new ArrayList<String>();
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor c;
+//        this.DB_Query = query;
+        list = new ArrayList<>();
+        db = this.getWritableDatabase();
         try
         {
             c = db.rawQuery("SELECT NAME FROM HERO", null);
@@ -114,16 +118,192 @@ public class DatabaseHelper extends SQLiteOpenHelper
             do
             {
                 name = c.getString(0);
-                listUsers.add(name);
+                list.add(name);
             }
             while(c.moveToNext());
             c.close();
         }
         catch (Exception e)
         {
-            Log.e("tle99", e.getMessage());
+            Log.e("Database", e.getMessage());
         }
         db.close();
-        return listUsers;
+        return list;
+    }
+    public List<String> getAllVillain()
+    {
+        list = new ArrayList<>();
+        db = this.getWritableDatabase();
+        try
+        {
+            c = db.rawQuery("SELECT NAME FROM VILLAIN", null);
+            if(c == null) return null;
+
+            String name;
+            c.moveToFirst();
+            do
+            {
+                name = c.getString(0);
+                list.add(name);
+            }
+            while(c.moveToNext());
+            c.close();
+        }
+        catch (Exception e)
+        {
+            Log.e("Database", e.getMessage());
+        }
+        db.close();
+        return list;
+    }
+    public List<String> getAllEquipment()
+    {
+        list = new ArrayList<>();
+        db = this.getWritableDatabase();
+        try
+        {
+            c = db.rawQuery("SELECT NAME FROM EQUIPMENT", null);
+            if(c == null) return null;
+
+            String name;
+            c.moveToFirst();
+            do
+            {
+                name = c.getString(0);
+                list.add(name);
+            }
+            while(c.moveToNext());
+        }
+        catch (Exception e)
+        {
+            Log.e("Database", e.getMessage());
+        }
+        db.close();
+        return list;
+    }
+    public List<String> getAllLocation()
+    {
+        list = new ArrayList<>();
+        db = this.getWritableDatabase();
+        try
+        {
+            c = db.rawQuery("SELECT NAME FROM LOCATION", null);
+            if(c == null) return null;
+
+            String name;
+            c.moveToFirst();
+            do
+            {
+                name = c.getString(0);
+                list.add(name);
+            }
+            while(c.moveToNext());
+        }
+        catch (Exception e)
+        {
+            Log.e("Database", e.getMessage());
+        }
+        db.close();
+        return list;
+    }
+    public List<String> getAllSuperpower()
+    {
+        list = new ArrayList<>();
+        db = this.getWritableDatabase();
+        try
+        {
+            c = db.rawQuery("SELECT NAME FROM SUPERPOWER", null);
+            if(c == null) return null;
+
+            String name;
+            c.moveToFirst();
+            do
+            {
+                name = c.getString(0);
+                list.add(name);
+            }
+            while (c.moveToNext());
+        }
+        catch (Exception e)
+        {
+            Log.e("Database", e.getMessage());
+        }
+        db.close();
+        return list;
+    }
+    public List<String> getAllSuperhero()
+    {
+        list = new ArrayList<>();
+        db = this.getWritableDatabase();
+        try
+        {
+            c = db.rawQuery("SELECT NAME FROM SUPERHERO", null);
+            if(c == null) return null;
+
+            String name;
+            c.moveToFirst();
+            do
+            {
+                name = c.getString(0);
+                list.add(name);
+            }
+            while (c.moveToNext());
+        }
+        catch (Exception e)
+        {
+            Log.e("Database", e.getMessage());
+        }
+        db.close();
+        return list;
+    }
+    public List<String> getAllSupervillain()
+    {
+        list = new ArrayList<>();
+        db = this.getWritableDatabase();
+        try
+        {
+            c = db.rawQuery("SELECT NAME FROM SUPERVILLAIN", null);
+            if(c == null) return null;
+
+            String name;
+            c.moveToFirst();
+            do
+            {
+                name = c.getString(0);
+                list.add(name);
+            }
+            while (c.moveToNext());
+        }
+        catch (Exception e)
+        {
+            Log.e("Database", e.getMessage());
+        }
+        db.close();
+        return list;
+    }
+    public List<String> getAllCrisis()
+    {
+        list = new ArrayList<>();
+        db = this.getWritableDatabase();
+        try
+        {
+            c = db.rawQuery("SELECT NAME FROM CRISIS", null);
+            if(c == null) return null;
+
+            String name;
+            c.moveToFirst();
+            do
+            {
+                name = c.getString(0);
+                list.add(name);
+            }
+            while (c.moveToNext());
+        }
+        catch (Exception e)
+        {
+            Log.e("Database", e.getMessage());
+        }
+        //db.close();
+        return list;
     }
 }

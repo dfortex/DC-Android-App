@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
         lvUsers = (ListView)findViewById(R.id.lvUsers);
-        List<String> listUsers = dbHelper.getAllUsers();
+        List<String> listUsers = dbHelper.getAllSuperhero();
+        listUsers.addAll(dbHelper.getAllCrisis());
 
         if(listUsers != null)
         {
